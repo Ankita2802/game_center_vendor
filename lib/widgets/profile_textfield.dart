@@ -29,6 +29,7 @@ class ProfileTextfield extends StatefulWidget {
   final bool? enabled;
   final bool obscureText;
   final int? counter;
+  final bool? isLabel;
 
   const ProfileTextfield({
     super.key,
@@ -58,6 +59,7 @@ class ProfileTextfield extends StatefulWidget {
     this.labelText,
     this.obscureText = false,
     this.counter,
+    this.isLabel = false,
   });
 
   @override
@@ -107,13 +109,22 @@ class _ProfileTextfieldState extends State<ProfileTextfield> {
             color: Color(0xFFF0F0F0),
             fontWeight: FontWeight.normal,
           ),
-          label: Row(
-            children: [
-              Text(widget.labelText ?? ""),
-              SizedBox(width: 11),
-              Icon(Icons.info_outline, size: 16, color: Color(0XFF827A7A)),
-            ],
-          ),
+          label:
+              widget.isLabel ?? false
+                  ? null
+                  : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(widget.labelText ?? ""),
+                      const SizedBox(width: 11),
+                      const Icon(
+                        Icons.info_outline,
+                        size: 16,
+                        color: Color(0XFF827A7A),
+                      ),
+                    ],
+                  ),
+          labelText: widget.isLabel ?? false ? widget.labelText : null,
           prefixIcon: widget.prefixIcon,
           labelStyle: onestFonts.copyWith(
             fontSize: 12,

@@ -2,12 +2,12 @@ import 'dart:io';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:game_center_vendor/screens/game_center_Specs/add_game_center_specs.dart';
 import 'package:game_center_vendor/screens/game_center_add/time_slot_bottomsheet.dart';
 import 'package:game_center_vendor/themes/app_font.dart';
 import 'package:game_center_vendor/themes/app_images.dart';
 import 'package:game_center_vendor/widgets/app_button.dart';
 import 'package:game_center_vendor/widgets/profile_textfield.dart';
-import 'package:game_center_vendor/widgets/team_textfield.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddEditGameScreen extends StatefulWidget {
@@ -102,7 +102,9 @@ class _AddEditGameScreenState extends State<AddEditGameScreen> {
                               ),
                               isScrollControlled: true,
                               builder: (context) {
-                                return SelectTimingsScreen();
+                                return SelectTimingsScreen(
+                                  timeController: timingController,
+                                );
                               },
                             );
                           },
@@ -157,12 +159,13 @@ class _AddEditGameScreenState extends State<AddEditGameScreen> {
                             //     .then((value) {
                             //   if (!value) return;
                             //   Navigator.pop(context, true);
-                            //   // Navigator.push(
-                            //   //   context,
-                            //   //   MaterialPageRoute(
-                            //   //     builder: (context) => const YourTeamScreen(),
-                            //   //   ),
-                            //   // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => const AddGameCenterSpecs(),
+                              ),
+                            );
                             // });
                           },
                           text: 'Next',

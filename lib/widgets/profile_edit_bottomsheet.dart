@@ -265,8 +265,8 @@ class _ProfileEditBottomSheetState extends State<ProfileEditBottomSheet> {
                 SizedBox(
                   height: 180,
                   child: ListWheelScrollView.useDelegate(
-                    itemExtent: 60,
-                    diameterRatio: 2.5,
+                    itemExtent: 10,
+                    diameterRatio: 1.5,
                     perspective: 0.005,
                     physics: const FixedExtentScrollPhysics(),
                     onSelectedItemChanged: (index) {
