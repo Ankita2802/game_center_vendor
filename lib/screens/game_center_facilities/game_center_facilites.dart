@@ -69,26 +69,9 @@ class _GameCenterFacilitiesState extends State<GameCenterFacilities> {
                   hintText: 'Enter Facility',
                   isLabel: true,
                   textInputAction: TextInputAction.next,
-                  suffixIcon: Image.asset(
-                    ProfileGameImages.editMessageIcon,
-                    cacheHeight: 25,
-                    cacheWidth: 25,
-                  ),
                 ),
                 const SizedBox(height: 24),
-                ProfileTextfield(
-                  controller: gamesController,
-                  labelText: 'Games',
-                  hintText: 'Enter Games',
-                  suffixIcon: Image.asset(
-                    ProfileGameImages.editMessageIcon,
-                    cacheHeight: 25,
-                    cacheWidth: 25,
-                  ),
-                  isLabel: true,
-                  textInputAction: TextInputAction.next,
-                ),
-
+                _uploadImg(),
                 SizedBox(height: 24),
                 AuthButton(
                   onTap: () {
@@ -110,107 +93,107 @@ class _GameCenterFacilitiesState extends State<GameCenterFacilities> {
       ),
     );
   }
+
   Widget _uploadImg() {
-  return _teamImage != null
-      ? Stack(
-        children: [
-          GestureDetector(
-            onTap: _pickImage,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.file(
-                _teamImage!,
-                fit: BoxFit.contain,
-                width: double.infinity,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: GestureDetector(
-              onTap: _pickImage,
-              child: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Color(0xFF000502),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  ),
-                ),
-                child: Icon(Icons.edit),
-              ),
-            ),
-          ),
-        ],
-      )
-      : SizedBox(
-        width: double.infinity,
-        height: 109,
-        child: Stack(
-          clipBehavior: Clip.none,
+    return _teamImage != null
+        ? Stack(
           children: [
-            DottedBorder(
-              borderType: BorderType.RRect,
-              radius: Radius.circular(12),
-              dashPattern: [10, 10],
-              color: Color(0XFF544B4B),
+            GestureDetector(
+              onTap: _pickImage,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.file(
+                  _teamImage!,
+                  fit: BoxFit.contain,
+                  width: double.infinity,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
               child: GestureDetector(
                 onTap: _pickImage,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                child: Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF000502),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: Icon(Icons.edit),
+                ),
+              ),
+            ),
+          ],
+        )
+        : SizedBox(
+          width: double.infinity,
+          height: 109,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              DottedBorder(
+                borderType: BorderType.RRect,
+                radius: Radius.circular(12),
+                dashPattern: [10, 10],
+                color: Color(0XFF544B4B),
+                child: GestureDetector(
+                  onTap: _pickImage,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          ProfileGameImages.uploadImageIcon,
+                          height: 24,
+                          width: 24,
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          'Ensure your image is under 1MB in size',
+                          style: onestFonts.copyWith(
+                            fontSize: 10,
+                            color: Color(0xFF827A7A),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: -8,
+                child: Container(
+                  color: Color(0xFF000502),
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
                     children: [
-                      Image.asset(
-                        ProfileGameImages.uploadImageIcon,
-                        height: 24,
-                        width: 24,
-                      ),
-                      const SizedBox(height: 5),
                       Text(
-                        'Ensure your image is under 1MB in size',
+                        'Upload Facility Images',
                         style: onestFonts.copyWith(
-                          fontSize: 10,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                           color: Color(0xFF827A7A),
                         ),
+                      ),
+                      SizedBox(width: 11),
+                      Icon(
+                        Icons.info_outline,
+                        size: 16,
+                        color: Color(0XFF827A7A),
                       ),
                     ],
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              left: 16,
-              top: -8,
-              child: Container(
-                color: Color(0xFF000502),
-                padding: EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    Text(
-                      'Upload Facility Images',
-                      style: onestFonts.copyWith(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF827A7A),
-                      ),
-                    ),
-                    SizedBox(width: 11),
-                    Icon(
-                      Icons.info_outline,
-                      size: 16,
-                      color: Color(0XFF827A7A),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-}
-
+            ],
+          ),
+        );
+  }
 }
 
 Widget headingRow(String text, VoidCallback onTap) {
@@ -233,4 +216,3 @@ Widget headingRow(String text, VoidCallback onTap) {
     ],
   );
 }
-

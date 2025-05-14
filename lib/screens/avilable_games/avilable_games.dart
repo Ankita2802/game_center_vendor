@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:game_center_vendor/screens/avilable_games/game_type_bottomsheet.dart';
 import 'package:game_center_vendor/screens/game_center_facilities/game_center_facilites.dart';
 import 'package:game_center_vendor/themes/app_font.dart';
 import 'package:game_center_vendor/themes/app_images.dart';
@@ -53,6 +54,20 @@ class _AvilableGamesState extends State<AvilableGames> {
                   controller: gameTypeController,
                   labelText: 'Game Type',
                   hintText: 'Enter Game Type',
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder:
+                          (context) => GameTypeBottomsheet(
+                            title: 'Game Type',
+                            controller: gameTypeController,
+                            labelText: 'Game Type',
+                            gamesType: ['PC Games', 'Console Games'],
+                          ),
+                    );
+                  },
                   isLabel: true,
                   textInputAction: TextInputAction.next,
                   suffixIcon: Image.asset(

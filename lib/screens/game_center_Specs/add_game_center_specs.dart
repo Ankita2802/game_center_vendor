@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:game_center_vendor/screens/avilable_games/avilable_games.dart';
+import 'package:game_center_vendor/screens/game_center_Specs/game_specs_bottomsheet.dart';
 import 'package:game_center_vendor/themes/app_font.dart';
 import 'package:game_center_vendor/themes/app_images.dart';
 import 'package:game_center_vendor/widgets/app_button.dart';
@@ -63,6 +65,26 @@ class _AddGameCenterSpecsState extends State<AddGameCenterSpecs> {
                   controller: pcSpecsController,
                   labelText: 'PC Specs',
                   hintText: 'Enter PC Specs',
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder:
+                          (context) => GameSpecsBottomsheet(
+                            title: 'PC Specs',
+                            controller: pcSpecsController,
+                            labelText: 'PC Specs',
+
+                            gamesSpecs: [
+                              '90 Hz Display, 32 GB RAM',
+                              '60 Hz Display, 32 GB RAM',
+                              '120 Hz Display, 64 GB RAM',
+                            ],
+                          ),
+                    );
+                  },
+
                   suffixIcon: Image.asset(
                     ProfileGameImages.editMessageIcon,
                     cacheHeight: 25,
@@ -119,11 +141,8 @@ class _AddGameCenterSpecsState extends State<AddGameCenterSpecs> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const AddGameCenterSpecs(),
-                      ),
+                      MaterialPageRoute(builder: (context) => AvilableGames()),
                     );
-                    // });
                   },
                   text: 'Next',
                   arrow: false,
